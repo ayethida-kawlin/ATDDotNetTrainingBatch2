@@ -155,7 +155,7 @@ namespace ATDDotNetTrainingBatch2.ConsoleApp
    SET [BlogTitle] = @Title
       ,[BlogAuthor] = @Author
       ,[BlogContent] = @Content
-       WHERE BlogId = 9 ";
+       WHERE BlogId = 8 ";
             
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -174,8 +174,13 @@ namespace ATDDotNetTrainingBatch2.ConsoleApp
 
         public void Delete()
         {
-            string query = @"DELETE FROM [dbo].[Tbl_Blog]
-      WHERE BlogId = 1 ";
+
+            //      string query = @"DELETE FROM [dbo].[Tbl_Blog]
+            //WHERE BlogId = 1 ";
+
+            string query = @"UPDATE [dbo].[Tbl_Blog]
+   SET IsDelete=1
+ WHERE BlogId=2 ";
 
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
