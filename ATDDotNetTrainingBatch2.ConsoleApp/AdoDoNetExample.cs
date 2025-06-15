@@ -45,6 +45,9 @@ namespace ATDDotNetTrainingBatch2.ConsoleApp
             DataTable dt = new DataTable(); // fill to Data table
             adapter.Fill(dt); // Execute
 
+            connection.Close();
+            List<BlogDto> lst = new List<BlogDto>(); // usning Dapper
+
             // Data Set : more than one query
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -54,12 +57,29 @@ namespace ATDDotNetTrainingBatch2.ConsoleApp
                 Console.WriteLine("BlogTitle=>" + row["BlogTitle"]);
                 Console.WriteLine("BlogAuthor=>" + row["BlogAuthor"]);
                 Console.WriteLine("BlogContent=>" + row["BlogContent"]);
+
+                BlogDto blog= new BlogDto();
+                blog.BlogId = Convert.ToInt32(row["BlogId"]);
+                blog.BlogTitle = Convert.ToString(row["BlogTitle"])!;
+                blog.BlogAuthor = Convert.ToString(row["BlogAuthor"])!;
+                blog.BlogContent = Convert.ToString(row["BlogContent"])!;
+                lst.Add(blog);
+
+               }
+
+            foreach (var item in lst)
+            {
+                Console.WriteLine("BlogId => " + item.BlogId);
+                Console.WriteLine("BlotTitle => " + item.BlogTitle);
+                Console.WriteLine("BlogAuthor => " + item.BlogAuthor);
+                Console.WriteLine("BlogContent => " + item.BlogContent);
             }
 
 
-            Console.WriteLine("connnection closing");
-            connection.Close();
-            Console.WriteLine("connnection close...");
+            //Console.WriteLine("connnection closing");
+
+            //connection.Close();
+            //Console.WriteLine("connnection close...");
         }
 
         public void Edit()
@@ -155,7 +175,7 @@ namespace ATDDotNetTrainingBatch2.ConsoleApp
    SET [BlogTitle] = @Title
       ,[BlogAuthor] = @Author
       ,[BlogContent] = @Content
-       WHERE BlogId = 8 ";
+       WHERE BlogId = 7 ";
             
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();

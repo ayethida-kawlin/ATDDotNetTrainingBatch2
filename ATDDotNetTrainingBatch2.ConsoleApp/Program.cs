@@ -5,13 +5,19 @@ using System.Data;
 
 Console.WriteLine("Hello, World!");
 
-AdoDoNetExample adoDoNetExample = new AdoDoNetExample();
+//AdoDoNetExample adoDoNetExample = new AdoDoNetExample();
 //adoDoNetExample.Read();
 //adoDoNetExample.Edit();
 //adoDoNetExample.Create();
-adoDoNetExample.Update();
+//adoDoNetExample.Update();
 //adoDoNetExample.Delete();
 
+DapperExample dapperExample=new DapperExample();
+//dapperExample.Read();
+//dapperExample.Edit();
+//dapperExample.Create();
+//dapperExample.Update();
+dapperExample.Delete();
 
 Console.ReadKey();
 
