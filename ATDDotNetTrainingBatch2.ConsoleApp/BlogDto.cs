@@ -13,6 +13,7 @@ namespace ATDDotNetTrainingBatch2.ConsoleApp
         public string BlogAuthor { get; set; }
         public string BlogContent { get; set; }
         public string BlogContents { get; set; }
+        public bool IsDelete { get; set; }
 
 
     }
