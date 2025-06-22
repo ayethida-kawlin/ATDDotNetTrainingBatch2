@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ATDDotNetTrainingBatch2.Database\ATDDotNetTrainingBatch2.Database.csproj" />
+  </ItemGroup>
+
 </Project>
