@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ATDDotNetTrainingBatch2.Database.AppDbContextModelsPOS;
+using ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 
 namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 {

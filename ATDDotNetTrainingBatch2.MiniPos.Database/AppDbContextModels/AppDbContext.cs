@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace ATDDotNetTrainingBatch2POS.Database.AppDbContextModels;
+namespace ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 
 public partial class AppDbContext : DbContext
 {
@@ -29,9 +29,9 @@ public partial class AppDbContext : DbContext
     {
         modelBuilder.Entity<TblProduct>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_Product");
+            entity.HasKey(e => e.ProductId);
+
+            entity.ToTable("Tbl_Product");
 
             entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.ProductCode)
@@ -44,10 +44,11 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<TblSaleDetail>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_SaleDetail");
+            entity.HasKey(e => e.SaleId);
 
+            entity.ToTable("Tbl_SaleDetail");
+
+            entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.ProductCode)
                 .HasMaxLength(50)
@@ -56,9 +57,6 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(250)
                 .IsUnicode(false);
             entity.Property(e => e.SaleDetailId)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.SaleId)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });

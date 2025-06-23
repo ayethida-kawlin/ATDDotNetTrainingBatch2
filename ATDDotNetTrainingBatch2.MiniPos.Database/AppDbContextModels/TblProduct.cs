@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ATDDotNetTrainingBatch2POS.Database.AppDbContextModels;
+namespace ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 
 public partial class TblProduct
 {
+    public int ProductId { get; set; }
+
     public string ProductCode { get; set; } = null!;
 
     public string ProductItem { get; set; } = null!;

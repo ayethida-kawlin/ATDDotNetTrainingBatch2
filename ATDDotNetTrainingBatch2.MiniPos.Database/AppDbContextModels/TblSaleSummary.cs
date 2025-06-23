@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ATDDotNetTrainingBatch2POS.Database.AppDbContextModels;
+namespace ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 
 public partial class TblSaleSummary
 {
