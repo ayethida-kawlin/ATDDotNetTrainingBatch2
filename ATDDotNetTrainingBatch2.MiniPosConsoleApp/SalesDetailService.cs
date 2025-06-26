@@ -100,5 +100,57 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 
 
         }
+
+        public void Execute()
+        {
+        Result:
+            Console.WriteLine("Sale Detail Service Menu");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("1. Sale Detail Listing ");
+            Console.WriteLine("2. Create Sale Detail ");
+            Console.WriteLine("3. Exit");
+            Console.WriteLine("----------------------------");
+
+            Console.Write("Choose Menu: ");
+            string result = Console.ReadLine()!;
+            bool isInt = int.TryParse(result, out int no);
+            if (!isInt)
+            {
+                Console.WriteLine("Invalid Sale Detail Menu , Please choose 1 to 3");
+                goto Result;
+            }
+
+            EnumSaleDetailMenu menu = (EnumSaleDetailMenu)no;
+            switch (menu)
+            {
+                case EnumSaleDetailMenu.SaleDetialListing:
+                    Read();
+                    break;
+                case EnumSaleDetailMenu.CreateSaleDetail:
+                    Create();
+                    break;
+                case EnumSaleDetailMenu.Exit:
+                    goto End;
+                case EnumSaleDetailMenu.None:
+                default:
+                    Console.WriteLine("Invalid Product Menu, Please choose 1 to 3");
+                    goto Result;
+            }
+            Console.WriteLine("----------------------");
+            goto Result;
+
+        End:
+            Console.WriteLine("Sale Detail Listing Exiting....");
+
+        }
     }
+
+    public enum EnumSaleDetailMenu
+    {
+        None,
+        SaleDetialListing,
+        CreateSaleDetail,
+        Exit
+    }
+
 }

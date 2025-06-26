@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -131,5 +132,74 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
             product.IsDelete = true;
             db.SaveChanges();
         }
+
+        public void Execute()
+        {
+        Result:
+            Console.WriteLine("Product Menu");
+            Console.WriteLine("----------------------");
+            Console.WriteLine("1. New Product");
+            Console.WriteLine("2. Product List");
+            Console.WriteLine("3. Edit Product");
+            Console.WriteLine("4. Delete Product");
+            Console.WriteLine("5. Exit");
+            Console.WriteLine("----------------------");
+
+            Console.Write("Choose Menu: ");
+            string result = Console.ReadLine()!;
+            bool isInt = int.TryParse(result, out int no);
+            if (!isInt)
+            {
+                Console.WriteLine("Invalid Product Menu, Please choose 1 to 5");
+                goto Result;
+            }
+
+            Console.WriteLine("----------------------");
+            EnumProductMenu menu = (EnumProductMenu)no;
+            switch (menu)
+            {
+                
+                case EnumProductMenu.NewProduct:
+                    Console.WriteLine("This menu is new Product");
+                    Console.WriteLine("----------------------");
+                    Create();
+                    break;
+                case EnumProductMenu.ProductList:
+                    Console.WriteLine("This menu is Product List");
+                    Read();
+                    Console.WriteLine("----------------------");
+                    break;
+                case EnumProductMenu.EditProduct:
+                    Console.WriteLine("This menu is Edit Product");
+                    Update();
+                    break;
+                case EnumProductMenu.DeleteProduct:
+                    Console.WriteLine("This menu is Delete Product");
+                    Delete();
+                    break;
+                case EnumProductMenu.Exit:
+                    goto End;
+                case EnumProductMenu.None:
+                default:
+                    Console.WriteLine("Invalid Product Menu, Please choose 1 to 5");
+                    goto Result;
+            }
+            Console.WriteLine("----------------------");
+            goto Result;
+
+        End:
+            Console.WriteLine("Exiting Product Menu....");
+        }
+    }
+
+    public enum EnumProductMenu
+    {
+        None,
+        NewProduct,
+        ProductList,
+        EditProduct,
+        DeleteProduct,
+        Exit
+
     }
 }

@@ -63,9 +63,7 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<TblSaleSummary>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Tbl_SaleSummary");
+            entity.ToTable("Tbl_SaleSummary");
 
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.InvoiceNo)

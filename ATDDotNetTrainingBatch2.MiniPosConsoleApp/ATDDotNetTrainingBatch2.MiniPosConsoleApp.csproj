@@ -21,7 +21,7 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\ATDDotNetTrainingBatch2.Database\ATDDotNetTrainingBatch2.Database.csproj" />
+	  <ProjectReference Include="..\ATDDotNetTrainingBatch2.MiniPOS.Database\ATDDotNetTrainingBatch2.MiniPOS.Database.csproj" />
 	</ItemGroup>
 
 </Project>

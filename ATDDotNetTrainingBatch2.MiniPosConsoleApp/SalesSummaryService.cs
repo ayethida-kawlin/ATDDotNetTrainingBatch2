@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +29,13 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
         public void Edit()
         {
 
-            Console.Write("Enter Invoice No: ");
-            string invoice = Console.ReadLine()!;
+            Console.Write("Enter Id: ");
+            string inputId = Console.ReadLine()!;
+            bool isInt = int.TryParse(inputId, out int Id);
+            if (!isInt) return;
 
             AppDbContext db = new AppDbContext();
-            var invoiceNo = db.TblSaleSummaries.FirstOrDefault(x => x.InvoiceNo == invoice);
+            var invoiceNo = db.TblSaleSummaries.FirstOrDefault(x => x.InvoiceNo == inputId);
             if (invoiceNo is null)
             {
                 return;
@@ -82,5 +85,56 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 
         }
 
+        public void Execute()
+        {
+        Result:
+            Console.WriteLine("Sale Summary Service Menu");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("1. Sale Summary Listing ");
+            Console.WriteLine("2. Create Sale Summary ");
+            Console.WriteLine("3. Exit");
+            Console.WriteLine("----------------------------");
+
+            Console.Write("Choose Menu:");
+            string result = Console.ReadLine()!;
+            bool isInt = int.TryParse(result, out int no);
+            if (!isInt)
+            {
+                goto Result;
+            }
+
+            EnumSaleSummaryMenu menu = (EnumSaleSummaryMenu)no;
+            switch (menu)
+            {
+                case EnumSaleSummaryMenu.SaleSummaryListing:
+                    Read();
+                    Edit();
+                    break;
+                case EnumSaleSummaryMenu.CreateSaleSummary:
+                    Create();
+                    break;
+                case EnumSaleSummaryMenu.Exit:
+                    goto End;
+                case EnumSaleSummaryMenu.None:
+                default:
+                    Console.WriteLine("Invalid Product Menu, Please choose 1 to 3");
+                    goto Result;
+            }
+            Console.WriteLine(" ----------------------");
+            goto Result;
+
+        End:
+            Console.WriteLine("Sale Summary Exiting.......");
+
+        }
+
+    }
+
+    public enum EnumSaleSummaryMenu
+    {
+        None,
+        SaleSummaryListing,
+        CreateSaleSummary,
+        Exit
     }
 }
