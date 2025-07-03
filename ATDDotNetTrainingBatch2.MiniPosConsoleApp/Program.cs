@@ -5,24 +5,11 @@ using ATDDotNetTrainingBatch2.MiniPosConsoleApp;
 
 Console.WriteLine("Welcome, Mini POS");
 
+#region Staff Registration
 StaffService staffService = new StaffService();
 Console.WriteLine("** Staff List ** ");
-Console.WriteLine("---------------------------------");
-Console.Write("Enter Staff Code: ");
-string staffCode = Console.ReadLine()!;
-Console.Write("Enter Staff Name: ");
-string staffName = Console.ReadLine()!;
-Console.Write("Enter Email Address: ");
-string email = Console.ReadLine()!;
-Console.Write("Enter Password: ");
-string password = Console.ReadLine()!;
-Console.Write("Enter Position: ");
-string position = Console.ReadLine()!;
-Console.Write("Enter Mobile No: ");
-string mobile = Console.ReadLine()!;
-Console.WriteLine("---------------------------------");
-staffService.Register(staffCode, staffName, email, password, position, mobile);
-
+staffService.Register();
+#endregion
 
 #region Call SaleUI only
 //SaleUI saleUI = new SaleUI();
