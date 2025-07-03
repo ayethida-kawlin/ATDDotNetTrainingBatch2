@@ -5,9 +5,9 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 
 public partial class TblSaleDetail
 {
-    public int SaleId { get; set; }
+    public int SaleDetailId { get; set; }
 
-    public string SaleDetailId { get; set; } = null!;
+    public int SaleId { get; set; }
 
     public string ProductCode { get; set; } = null!;
 
@@ -18,4 +18,6 @@ public partial class TblSaleDetail
     public decimal Price { get; set; }
 
     public DateTime Date { get; set; }
+
+    public bool IsDelete { get; set; }
 }

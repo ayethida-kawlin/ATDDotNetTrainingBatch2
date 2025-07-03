@@ -21,6 +21,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TblSaleSummary> TblSaleSummaries { get; set; }
 
+    public virtual DbSet<TblStaffRegistration> TblStaffRegistrations { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=.;Database=DotNetTrainingBatch2MiniPOS;User ID=sa;Password=sasa@123;TrustServerCertificate=True;");
@@ -44,11 +46,12 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<TblSaleDetail>(entity =>
         {
-            entity.HasKey(e => e.SaleId);
+            entity.HasKey(e => e.SaleDetailId);
 
             entity.ToTable("Tbl_SaleDetail");
 
             entity.Property(e => e.Date).HasColumnType("datetime");
+            entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.Price).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.ProductCode)
                 .HasMaxLength(50)
@@ -56,23 +59,46 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.ProductName)
                 .HasMaxLength(250)
                 .IsUnicode(false);
-            entity.Property(e => e.SaleDetailId)
-                .HasMaxLength(50)
-                .IsUnicode(false);
         });
 
         modelBuilder.Entity<TblSaleSummary>(entity =>
         {
+            entity.HasKey(e => e.SaleId).HasName("PK_Tbl_SaleSummary_1");
+
             entity.ToTable("Tbl_SaleSummary");
 
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.InvoiceNo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.SaleId)
+            entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
+        });
+
+        modelBuilder.Entity<TblStaffRegistration>(entity =>
+        {
+            entity.HasKey(e => e.StaffId);
+
+            entity.ToTable("Tbl_StaffRegistration");
+
+            entity.Property(e => e.EmailAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("emailAddress");
+            entity.Property(e => e.MobileNo)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Total).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.Position)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.StaffCode)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.StaffName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -52,6 +52,7 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
             string invoiceNo = Console.ReadLine()!;
             Console.Write("Enter SaleId: ");
             string SaleId = Console.ReadLine()!;
+            var salesId = Convert.ToInt32(SaleId);
         DateInput:
             Console.Write("Enter Date: ");
             var date = Console.ReadLine()!;
@@ -73,7 +74,7 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
             var saleSummary = new TblSaleSummary()
             {   
                 InvoiceNo= invoiceNo,
-                SaleId = SaleId,
+                SaleId = salesId,
                 Date = DateInput,
                 Total= PriceInput
 

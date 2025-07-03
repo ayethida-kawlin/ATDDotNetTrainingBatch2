@@ -17,7 +17,7 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 
             foreach (var item in saleListing)
             {
-                Console.WriteLine("SaleDetailId => " + item.SaleDetailId);
+                Console.WriteLine("saleId  => " + item.SaleId);
                 Console.WriteLine("ProductCode => " + item.ProductCode);
                 Console.WriteLine("ProductName => " + item.ProductName);
                 Console.WriteLine("Qty => " + item.Qty);
@@ -28,7 +28,7 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 
         public void Edit()
         {
-            Console.Write("Enter Sale id: ");
+            Console.Write("Enter SaleDetail id: ");
             string input = Console.ReadLine()!;
 
             bool isInt = int.TryParse(input, out int Id);
@@ -40,7 +40,7 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
             {
                 return;
             }
-            Console.WriteLine("SaleDetailId => " + saleIdInput.SaleDetailId);
+            Console.WriteLine("SaleId => " + saleIdInput.SaleId);
             Console.WriteLine("ProductCode => " + saleIdInput.ProductCode);
             Console.WriteLine("ProductName => " + saleIdInput.ProductName);
             Console.WriteLine("Qty => " + saleIdInput.Qty);
@@ -50,8 +50,9 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 
         public void Create()
         {
-            Console.Write("Enter Sale Detail Id: ");
-            string saleDetailId= Console.ReadLine()!;
+            Console.Write("Enter Sale Id: ");
+            string saleId= Console.ReadLine()!;
+            var salesId = Convert.ToInt32(saleId);
             Console.Write("Enter ProductCode: ");
             string ProductCode = Console.ReadLine()!;
             Console.Write("Enter ProductName: ");
@@ -86,7 +87,7 @@ namespace ATDDotNetTrainingBatch2.MiniPosConsoleApp
 
             var saleListing = new TblSaleDetail()
             {
-                SaleDetailId = saleDetailId,
+                SaleId = salesId,
                 ProductCode= ProductCode,
                 ProductName= ProductName,
                 Qty = QtyInput,
