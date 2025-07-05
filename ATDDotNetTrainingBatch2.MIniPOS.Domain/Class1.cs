@@ -1,4 +1,4 @@
-﻿namespace ATDDotNetTrainingBatch2.Domain
+﻿namespace ATDDotNetTrainingBatch2.MiniPOS.Domain
 {
     public class Class1
     {

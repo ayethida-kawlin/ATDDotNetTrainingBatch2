@@ -33,7 +33,7 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
 
             db.TblSaleSummaries.Add(saleSummary);
             db.SaveChanges();
-            
+
 
             #endregion
 
@@ -44,7 +44,7 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
                 product.SaleId = saleSummary.SaleId;
             }
             db.TblSaleDetails.AddRange(products);
-           var result = db.SaveChanges();
+            var result = db.SaveChanges();
             return result;
 
             #endregion

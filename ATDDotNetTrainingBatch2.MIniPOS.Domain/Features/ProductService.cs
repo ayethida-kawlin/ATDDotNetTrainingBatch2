@@ -43,14 +43,14 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
             return productInput;
         }
 
-        public int UpdateProduct(int id, string productCode,string productName, decimal productPrice)
+        public int UpdateProduct(int id, string productCode, string productName, decimal productPrice)
         {
             AppDbContext db = new AppDbContext();
             var product = db.TblProducts
                 .Where(x => x.IsDelete == false)
                 .FirstOrDefault(x => x.ProductId == id);
 
-            if (product is null) return -1;            
+            if (product is null) return -1;
 
             product.ProductCode = productCode;
             product.ProductItem = productName;
@@ -60,16 +60,15 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
             return result;
         }
 
-        public int DeleteProduct(int id) 
+        public int DeleteProduct(int id)
         {
             AppDbContext db = new AppDbContext();
             var product = db.TblProducts.FirstOrDefault(x => x.ProductId == id);
             if (product is null) return -1;
 
             product.IsDelete = true;
-            var result= db.SaveChanges();
+            var result = db.SaveChanges();
             return result;
         }
-
     }
 }

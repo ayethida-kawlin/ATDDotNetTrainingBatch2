@@ -1,6 +1,5 @@
 ﻿using ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +43,13 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
             var staffInput = db.SaveChanges();
             return staffInput;
         }
-     
+
+        public void Read()
+        {
+            AppDbContext db = new AppDbContext();
+            var lst = db.TblProducts
+                .Where(x => x.IsDelete == false).ToList();
+            //return lst;
+        }
     }
 }

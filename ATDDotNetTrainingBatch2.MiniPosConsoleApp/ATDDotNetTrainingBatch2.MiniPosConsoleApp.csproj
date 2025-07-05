@@ -28,6 +28,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ATDDotNetTrainingBatch2.Domain\ATDDotNetTrainingBatch2.MiniPOS.Domain.csproj" />
 	  <ProjectReference Include="..\ATDDotNetTrainingBatch2.MiniPOS.Database\ATDDotNetTrainingBatch2.MiniPOS.Database.csproj" />
+	  <ProjectReference Include="..\ATDDotNetTrainingBatch2.MiniPOS.Domain\ATDDotNetTrainingBatch2.MiniPOS.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

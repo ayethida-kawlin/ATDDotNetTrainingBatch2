@@ -7,15 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="D:\DotNetTraining\ATDDotNetTrainingBatch2\ATDDotNetTrainingBatch2.MIniPOS.Domain\Features\StaffService.cs" Link="Features\StaffService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ATDDotNetTrainingBatch2.MiniPOS.Database\ATDDotNetTrainingBatch2.MiniPOS.Database.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\" />
   </ItemGroup>
 
 </Project>
