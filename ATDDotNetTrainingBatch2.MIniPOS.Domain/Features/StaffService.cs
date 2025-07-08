@@ -26,7 +26,7 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
             string mobile = Console.ReadLine()!;
             Console.WriteLine("---------------------------------");
 
-            var staff = new TblStaffRegistration()
+            var staff = new TblStaff()
             {
                 StaffCode = code,
                 StaffName = name,
@@ -39,7 +39,7 @@ namespace ATDDotNetTrainingBatch2.MiniPOS.Domain.Features
 
 
             AppDbContext db = new AppDbContext();
-            db.TblStaffRegistrations.Add(staff);
+            db.TblStaffs.Add(staff);
             var staffInput = db.SaveChanges();
             return staffInput;
         }

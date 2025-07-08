@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
+namespace ATDDotNetTrainingBatch2.WinFormsApp1.Database.AppDbContextModels;
 
 public partial class AppDbContext : DbContext
 {

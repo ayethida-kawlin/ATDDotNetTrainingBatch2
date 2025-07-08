@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ATDDotNetTrainingBatch2.MiniPOS.Database.AppDbContextModels;
 
-public partial class TblStaffRegistration
+public partial class TblStaff
 {
     public int StaffId { get; set; }
 
