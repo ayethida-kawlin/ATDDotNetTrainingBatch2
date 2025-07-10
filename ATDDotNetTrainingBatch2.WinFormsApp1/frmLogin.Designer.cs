@@ -50,7 +50,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(259, 31);
             txtUsername.TabIndex = 1;
-            txtUsername.Text = "Anna";
+            txtUsername.Text = "S001";
             txtUsername.KeyDown += txtUsername_KeyDown;
             // 
             // label2

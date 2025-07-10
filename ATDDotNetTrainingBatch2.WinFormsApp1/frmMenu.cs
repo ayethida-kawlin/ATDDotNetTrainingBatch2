@@ -20,8 +20,8 @@ namespace ATDDotNetTrainingBatch2.WinFormsApp1
 
         private void productToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmProduct frm = new frmProduct();
-            //frm.ShowDialog();
+            frmProduct frm = new frmProduct();
+            frm.ShowDialog();
 
         }
 
