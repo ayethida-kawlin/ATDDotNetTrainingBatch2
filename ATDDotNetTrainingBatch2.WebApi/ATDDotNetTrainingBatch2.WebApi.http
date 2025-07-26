@@ -1,0 +1,6 @@
+@ATDDotNetTrainingBatch2.WebApi_HostAddress = http://localhost:5199
+
+GET {{ATDDotNetTrainingBatch2.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
