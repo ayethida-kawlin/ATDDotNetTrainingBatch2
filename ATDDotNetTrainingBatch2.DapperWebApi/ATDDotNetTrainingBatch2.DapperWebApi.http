@@ -1,0 +1,6 @@
+@ATDDotNetTrainingBatch2.DapperWebApi_HostAddress = http://localhost:5105
+
+GET {{ATDDotNetTrainingBatch2.DapperWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
