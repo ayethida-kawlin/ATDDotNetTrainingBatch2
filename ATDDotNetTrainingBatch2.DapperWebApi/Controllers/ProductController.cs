@@ -25,7 +25,7 @@ namespace ATDDotNetTrainingBatch2.DapperWebApi.Controllers
             using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection")))
             {
                 db.Open();
-                var lst = db.Query<ProductModel>("select * from Tbl_Product;");
+                var lst = db.Query<ProductModel>("select * from Tbl_Product where IsDelete=0;");
                 return Ok(lst);
             }
 
@@ -49,6 +49,51 @@ namespace ATDDotNetTrainingBatch2.DapperWebApi.Controllers
                 return Ok(item);
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpsertProduct(int id, ProductRequestModel requestModel)
+        {
+            using (IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection")))
+            {
+                db.Open();
+                var item = db.QueryFirstOrDefault<ProductModel>("select * from Tbl_Product where ProductId = @ProductId;", new
+                {
+                    ProductId = id
+                });
+                if(item is null)
+                {
+                    string query = @"INSERT INTO [dbo].[Tbl_Product]
+           ([ProductCode]
+           ,[ProductItem]
+           ,[Price]
+           ,[IsDelete])
+     VALUES
+           (@ProductCode
+           ,@ProductItem
+           ,@Price
+           ,0)";
+                    int result = db.Execute(query, requestModel);
+                    return Ok(result > 0 ? "Creating successful" : " Creating Failed");
+                }
+                else
+                {
+                    string query = @"UPDATE [dbo].[Tbl_Product]
+   SET [ProductCode] = @ProductCode
+      ,[ProductItem] = @ProductItem
+      ,[Price] = @Price
+ WHERE ProductId = @ProductId;";
+                    int result = db.Execute(query, new
+                    {
+                        ProductCode = requestModel.ProductCode,
+                        ProductItem = requestModel.ProductItem,
+                        Price = requestModel.Price,
+                        ProductId = id
+                    });
+                    return Ok(result > 0 ? "Updating successful" : "Updating Failed");
+                }
+            }
+        }
+
         [HttpPost]
         public IActionResult CreateProduct(ProductRequestModel requestModel)
         {
