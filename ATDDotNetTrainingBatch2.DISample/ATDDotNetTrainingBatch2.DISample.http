@@ -1,0 +1,6 @@
+@ATDDotNetTrainingBatch2.DISample_HostAddress = http://localhost:5218
+
+GET {{ATDDotNetTrainingBatch2.DISample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
