@@ -154,6 +154,9 @@
                 // console.log(item);      
                 // console.log({item});   
                 rows += `<tr>
+                    <td><button data-blog-id="${item.Id}" type="button" class="btn btn-warning btn-edit">Edit</button>
+                        <button data-id="${item.Id}" type="button" class="btn btn-danger btn-delete">Delete</button>
+                        </td>
                     <th scope="row">${i + 1}</th>
                     <td>${item.Title}</td>
                     <td>${item.Author}</td>
@@ -162,16 +165,84 @@
             }
 
             $('#tbData').html(rows);
+            bindEdit();
+            bindDelete();
         }
 
+        function bindDelete() {
+            $('.btn-delete').click(function () {
+                let isConfirm = confirm('Are you sure want to delete?');
+                if (!isConfirm) return;
+
+                const id = $(this).data('id');
+                let lst = getBlogs();
+                let blogs = lst.filter(x => x.Id != id);
+
+                let jsonStr = JSON.stringify(blogs);
+                localStorage.setItem('blogs', jsonStr);
+                clearControl();
+                loadData();
+            })
+        }
+
+        let editId = null;
+        function bindEdit() {
+            $('.btn-edit').click(function () {
+                // alert('edit click');
+                const id = $(this).data('blog-id');
+                console.log(id);
+
+                let lst = getBlogs();
+                let result = lst.filter(x => x.Id == id);
+                console.log(result);
+                if (result.length == 0) {
+                    return; // no data found.
+                }
+                const item = result[0];
+                console.log(item);
+
+                editId = item.Id;
+                $('#txtTitle').val(item.Title);
+                $('#txtAuthor').val(item.Author);
+                $('#txtContent').val(item.Content);
+            })
+        }
         $('#btnCancel').click(function () {
             clearControl();
         })
+
+        function getBlogs() {
+            let blogDb = localStorage.getItem('blogs');
+            let blogs = [];
+            if (blogDb == null) {
+                blogs = [];
+            }
+            else {
+                blogs = JSON.parse(blogDb); // {}, []
+            }
+            return blogs;
+        }
 
         $('#btnSave').click(function () {
             const title = $('#txtTitle').val();
             const author = $('#txtAuthor').val();
             const content = $('#txtContent').val();
+
+            if(title == null || title == ""){
+                alert('Please enter title.');
+                $('#txtTitle').focus();
+                return;
+            }
+            if(author == null || author == ""){
+                alert('Please enter Author.');
+                $('#txtAuthor').focus();
+                return;
+            }
+            if(content == null || content == ""){
+                alert('Please enter Content.');
+                $('#txtContent').focus();
+                return;
+            }
             // check data from localstorage
             let blogDb = localStorage.getItem('blogs');
             let blogs = [];
@@ -181,18 +252,34 @@
             else {
                 blogs = JSON.parse(blogDb); // {}, []
             }
-            // Insert data
-            let blogItem = {
-                Title: title,
-                Author: author,
-                Content: content
-            };
 
-            blogs.push(blogItem);
+            if (editId == null) {
+                // Insert data
+                let id = generateUUID();
+                let blogItem = {
+                    Id: id,
+                    Title: title,
+                    Author: author,
+                    Content: content
+                };
 
+                blogs.push(blogItem);
+            }
+            else {
+
+                let index = blogs.findIndex(x => x.Id == editId);
+                console.log(index);
+                blogs[index].Title = title;
+                blogs[index].Author = author;
+                blogs[index].Content = content;
+
+            }
+
+            editId = null;
             let jsonStr = JSON.stringify(blogs);
             localStorage.setItem('blogs', jsonStr);
             clearControl();
+            loadData();
 
         })
 
@@ -201,6 +288,14 @@
             $('#txtAuthor').val('');
             $('#txtContent').val('');
             $('#txtTitle').focus();
+        }
+
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0,
+                    v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
         }
     </script>
 </body>
