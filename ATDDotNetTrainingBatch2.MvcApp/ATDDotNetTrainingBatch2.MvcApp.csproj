@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Ulid" Version="1.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ATDDotNetTrainingBatch2.MVC_Blog.Database\ATDDotNetTrainingBatch2.MVC_Blog.Database.csproj" />
+  </ItemGroup>
+
 </Project>

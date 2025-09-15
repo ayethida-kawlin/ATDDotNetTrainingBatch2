@@ -61,6 +61,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATDDotNetTrainingBatch2.Mvc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATDDotNetTrainingBatch2.MvcApp", "ATDDotNetTrainingBatch2.MvcApp\ATDDotNetTrainingBatch2.MvcApp.csproj", "{83E22C6B-F842-4C36-AD76-7DDD3DEAD91F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATDDotNetTrainingBatch2.MVC_Blog.Database", "ATDDotNetTrainingBatch2.MVC_Blog.Database\ATDDotNetTrainingBatch2.MVC_Blog.Database.csproj", "{3F9137D5-BF18-4FFA-BA79-03E83BE50548}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{83E22C6B-F842-4C36-AD76-7DDD3DEAD91F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83E22C6B-F842-4C36-AD76-7DDD3DEAD91F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83E22C6B-F842-4C36-AD76-7DDD3DEAD91F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F9137D5-BF18-4FFA-BA79-03E83BE50548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F9137D5-BF18-4FFA-BA79-03E83BE50548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F9137D5-BF18-4FFA-BA79-03E83BE50548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F9137D5-BF18-4FFA-BA79-03E83BE50548}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +173,7 @@ Global
 		{5C2F300F-C07F-47C6-AC3D-3986E446EB5F} = {63B1DA07-3B17-44CA-A3AF-7F4AA6F29750}
 		{CDCFDDD9-3B43-42E9-BAEC-E9A0EFCBE44E} = {C4AC3383-6480-40EF-BAB8-2A78685AF2FA}
 		{83E22C6B-F842-4C36-AD76-7DDD3DEAD91F} = {C4AC3383-6480-40EF-BAB8-2A78685AF2FA}
+		{3F9137D5-BF18-4FFA-BA79-03E83BE50548} = {C4AC3383-6480-40EF-BAB8-2A78685AF2FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C9EA11F-5942-4EAA-8FF4-1A4E33C9D854}

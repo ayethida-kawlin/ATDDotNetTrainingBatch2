@@ -1,7 +1,15 @@
+using ATDDotNetTrainingBatch2.MVC_Blog.Database.AppDbContextModels;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AppDbContext>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
+});
 
 var app = builder.Build();
 
@@ -23,5 +31,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+// https://localhost:3000/Home/Index/id (primary_key)
 
 app.Run();
