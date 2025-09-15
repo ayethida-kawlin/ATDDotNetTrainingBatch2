@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "New Blog";
+}
+<form action="/blog/save" method="post">
+    <div class="mb-3">
+        <label for="txtTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" id="txtTitle" placeholder="enter title" name="Title">
+    </div>
+    <div class="mb-3">
+        <label for="txtAuthor" class="form-label">Author</label>
+        <input type="text" class="form-control" id="txtAuthor" placeholder="enter author" name="Author">
+    </div>
+    <div class="mb-3">
+        <label for="txtContent" class="form-label">Content</label>
+        <input type="text" class="form-control" id="txtContent" placeholder="enter content" name="Content">
+    </div>
+    <button class="btn btn-dark" type="button" id="btnCancel">Cancel</button>
+    <button class="btn btn-success" type="submit" id="btnSave">Save</button>
+
+</form>
