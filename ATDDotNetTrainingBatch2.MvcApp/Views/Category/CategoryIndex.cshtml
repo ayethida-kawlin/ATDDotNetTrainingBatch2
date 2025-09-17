@@ -1,7 +1,9 @@
-﻿<table class="table table-striped">
+﻿<a class="btn btn-outline-success" href="/category/create">Create</a>
+<table class="table table-striped">
     <thead>
         <tr>
             <th></th>
+            <th>No</th>
             <th>Category Id</th>
             <th>Category Code</th>
             <th>Category Name</th>
@@ -26,10 +28,14 @@
                 type:"GET",
                 success: function (response){
                     console.log({response});
-
+                    
                     let trRow = '';
+                    
                     for (let i=0; i < response.length; i++){
                         let row = `<tr>
+                                <td>
+                                    <a href="/category/edit/${response[i].CategoryId}" class="btn btn-outline-warning">Edit</a>
+                                </td>
                                 <td>${i + 1}</td>
                                 <td>${response[i].CategoryId}</td>
                                 <td>${response[i].CategoryCode}</td>
